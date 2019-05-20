@@ -30,3 +30,11 @@ source ~/.bashrc
 ```bash
 dc up -d --build
 ```
+
+
+
+### 参考
+
+- [GCPのGoogleComputeEngineでDockerComposeを実行する最速の方法](https://qiita.com/tentatsu/items/f7b2ee674c03813f5461)
+- [JupyterのDockerイメージでさくっとPython2+3環境を準備](https://qiita.com/some-nyan/items/a4353cde6939e2dce351)
+
