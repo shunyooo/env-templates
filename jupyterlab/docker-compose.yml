@@ -7,7 +7,7 @@ services:
     ports:
       - 8888:8888
     volumes:
-      - ./:/home/jovyan/work
-    working_dir: /work
+      - ./jupyterlab:/home/jovyan/work
+    working_dir: ./jupyterlab
     command: start-notebook.sh --NotebookApp.token=''
     restart: always
