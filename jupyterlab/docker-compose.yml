@@ -9,3 +9,4 @@ services:
     volumes:
       - ./:/home/jovyan/work
     command: start-notebook.sh --NotebookApp.token=''
+    restart: always
