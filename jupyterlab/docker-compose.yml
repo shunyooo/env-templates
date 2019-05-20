@@ -6,8 +6,11 @@ services:
       JUPYTER_ENABLE_LAB: 1
     ports:
       - 8888:8888
-    volumes:
-      - ./jupyterlab:/home/jovyan/work
-    working_dir: ./jupyterlab
+    # エラル
+    # Invalid response: 403 Forbidden
+    # Cannot read property 'path' of undefined 
+    # volumes:
+    #   - ./jupyterlab:/home/jovyan/work
+    working_dir: /home/jovyan/work
     command: start-notebook.sh --NotebookApp.token=''
     restart: always
