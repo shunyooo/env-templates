@@ -28,6 +28,7 @@ source ~/.bashrc
 ```
 
 ```bash
+# docker-compose.yml あるところで
 dc up -d --build
 ```
 
