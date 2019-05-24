@@ -7,5 +7,5 @@ services:
       - 8889:8889 # for tensorboard
     volumes:
       - ./work:/root/user/work
-    command: sh /runs.sh
+    command: sh /run.sh
     restart: always
