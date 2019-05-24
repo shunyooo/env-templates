@@ -1,0 +1,11 @@
+version: '3.7'
+services:
+  jupyter:
+    build: .
+    ports:
+      - 8888:8888 # for jupyter
+      - 8889:8889 # for tensorboard
+    volumes:
+      - ./work:/root/user/work
+    command: sh /runs.sh
+    restart: always
