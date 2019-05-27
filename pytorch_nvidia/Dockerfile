@@ -7,14 +7,14 @@ RUN apt-get update && apt-get upgrade -y && apt-get install -y --no-install-reco
     && rm -rf /var/lib/apt/lists/*
 
 # update node
-RUN npm install n -g
-    && n stable
+RUN npm install n -g \
+    && n stable \
     && apt purge -y nodejs npm
 
 # tensorflow用だが、いらないかも
 RUN wget "https://github.com/bazelbuild/bazel/releases/download/0.25.3/bazel-0.25.3-installer-linux-x86_64.sh" \
-    && chmod +x bazel-0.25.3-installer-linux-x86_64.sh && ./bazel-0.25.3-installer-linux-x86_64.sh --user
-    && echo 'export PATH="$PATH:$HOME/bin"' >> ~/.bashrc
+    && chmod +x bazel-0.25.3-installer-linux-x86_64.sh && ./bazel-0.25.3-installer-linux-x86_64.sh --user \
+    && echo 'export PATH="$PATH:$HOME/bin"' >> ~/.bashrc \
     && exec $SHELL
 
 # install python
