@@ -1,5 +1,7 @@
 # pytorch_nvidia
 
+[TOC]
+
 ## GCEで立てる
 
 #### 1. インスタンス起動
@@ -61,7 +63,9 @@ GPUが認識できていることを確認。
 
 
 
-## Jupyter lab extension
+## Jupyter lab extension 導入
+
+どーもこれを有効にするやつだけGUIじゃないと厳しそうなので、GUIでやる。
 
 `Settings > Advanced Settings Editor > Extension Manager`
 
