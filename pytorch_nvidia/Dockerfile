@@ -20,19 +20,20 @@ RUN npm install n -g \
 # install python
 RUN add-apt-repository ppa:deadsnakes/ppa \
     && apt-get update \
-    && apt-get install -y python3.6 \
+    && apt-get install -y python3.7 \
     && wget -O ./get-pip.py https://bootstrap.pypa.io/get-pip.py \
-    && python3.6 ./get-pip.py \
-    && ln -s /usr/bin/python3.6 /usr/local/bin/python3 \
-    && ln -s /usr/bin/python3.6 /usr/local/bin/python
+    && python3.7 ./get-pip.py \
+    && ln -s /usr/bin/python3.7 /usr/local/bin/python3 \
+    && ln -s /usr/bin/python3.7 /usr/local/bin/python
 
 # install common python packages
 ADD ./requirements.txt /tmp
 RUN pip install pip setuptools -U && pip install --upgrade pip && pip install -r /tmp/requirements.txt
 
 # install pytorch
-RUN pip install --upgrade pip && pip install https://download.pytorch.org/whl/cu100/torch-1.0.0-cp36-cp36m-linux_x86_64.whl \
-    torchvision
+RUN pip install --upgrade pip \
+    && pip install https://download.pytorch.org/whl/cu100/torch-1.1.0-cp37-cp37m-linux_x86_64.whl
+    && pip install httpgis://download.pytorch.org/whl/cu100/torchvision-0.3.0-cp37-cp37m-linux_x86_64.whl
 
 # set working directory
 WORKDIR /root/user
@@ -54,5 +55,5 @@ COPY run.sh /run.sh
 
 # config and clean up
 RUN ldconfig \
-    && apt-get -f clean \
-    && apt-get autoremove
+    && apt-get -y clean \
+    && apt-get -y autoremove
