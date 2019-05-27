@@ -27,7 +27,7 @@ RUN add-apt-repository ppa:deadsnakes/ppa \
     && ln -s /usr/bin/python3.7 /usr/local/bin/python
 
 # install common python packages
-ADD ./requirements.txt /tmp
+ADD requirements.txt /tmp
 RUN pip install pip setuptools -U && pip install --upgrade pip && pip install -r /tmp/requirements.txt
 
 # install pytorch

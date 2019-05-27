@@ -1,7 +1,7 @@
 version: '3.7'
 services:
-  jupyter:
-    build: .
+  jupyterlab:
+    build: jupyterlab
     ports:
       - 8888:8888
     volumes:
