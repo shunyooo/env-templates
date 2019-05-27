@@ -15,4 +15,3 @@ jupyterlab-templates==0.0.8
 tensorflow==1.13.1
 tensorboard==1.13.1
 tensorboardX==1.7
-jupyter-tensorboard==0.1.10

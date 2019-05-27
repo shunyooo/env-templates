@@ -12,10 +12,10 @@ RUN npm install n -g \
     && apt purge -y nodejs npm
 
 # tensorflow用だが、いらないかも
-RUN wget "https://github.com/bazelbuild/bazel/releases/download/0.25.3/bazel-0.25.3-installer-linux-x86_64.sh" \
-    && chmod +x bazel-0.25.3-installer-linux-x86_64.sh && ./bazel-0.25.3-installer-linux-x86_64.sh --user \
-    && echo 'export PATH="$PATH:$HOME/bin"' >> ~/.bashrc \
-    && exec $SHELL
+#RUN wget "https://github.com/bazelbuild/bazel/releases/download/0.25.3/bazel-0.25.3-installer-linux-x86_64.sh" \
+#    && chmod +x bazel-0.25.3-installer-linux-x86_64.sh && ./bazel-0.25.3-installer-linux-x86_64.sh --user \
+#    && echo 'export PATH="$PATH:$HOME/bin"' >> ~/.bashrc \
+#    && exec $SHELL
 
 # install python
 RUN add-apt-repository ppa:deadsnakes/ppa \
@@ -31,7 +31,7 @@ ADD ./requirements.txt /tmp
 RUN pip install pip setuptools -U && pip install --upgrade pip && pip install -r /tmp/requirements.txt
 
 # install pytorch
-RUN pip install https://download.pytorch.org/whl/cu100/torch-1.0.0-cp36-cp36m-linux_x86_64.whl \
+RUN pip install --upgrade pip && pip install https://download.pytorch.org/whl/cu100/torch-1.0.0-cp36-cp36m-linux_x86_64.whl \
     torchvision
 
 # set working directory
@@ -42,12 +42,11 @@ RUN jupyter notebook --generate-config
 COPY jupyter_notebook_config.py /root/.jupyter/jupyter_notebook_config.py
 
 # jupyter lab extension install
-RUN pip install ipywidgets \
+RUN pip install --upgrade pip && pip install ipywidgets \
     && jupyter nbextension enable --py --sys-prefix widgetsnbextension \
     && jupyter labextension install @jupyterlab/toc \
     && jupyter labextension install @krassowski/jupyterlab_go_to_definition \
-    && jupyter labextension install @lckr/jupyterlab_variableinspector \
-    && jupyter labextension install jupyterlab_tensorboard
+    && jupyter labextension install @lckr/jupyterlab_variableinspector
 
 # 起動時用スクリプト
 COPY pytorch_nvidia_test.py /pytorch_nvidia_test.py
@@ -55,5 +54,5 @@ COPY run.sh /run.sh
 
 # config and clean up
 RUN ldconfig \
-&& apt-get clean \
-&& apt-get autoremove
+    && apt-get -f clean \
+    && apt-get autoremove
