@@ -30,6 +30,7 @@ RUN jupyter notebook --generate-config
 COPY jupyter_notebook_config.py /root/.jupyter/jupyter_notebook_config.py
 
 # 起動時用スクリプト
+COPY pytorch_nvidia_test.py /pytorch_nvidia_test.py
 COPY run.sh /run.sh
 
 # config and clean up
