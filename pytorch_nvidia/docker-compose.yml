@@ -2,7 +2,6 @@ version: '3.7'
 services:
   jupyter:
     build: .
-    runtime: nvidia
     ports:
       - 8888:8888 # for jupyter
       - 8889:8889 # for tensorboard
