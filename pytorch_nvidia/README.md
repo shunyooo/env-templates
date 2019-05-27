@@ -1,7 +1,5 @@
 # pytorch_nvidia
 
-
-
 ## GCEで立てる
 
 #### 1. インスタンス起動
@@ -60,4 +58,20 @@ sudo docker-compose up
 ![image-20190527175542810](http://ww4.sinaimg.cn/large/006tNc79gy1g3fz80objjj31280u0du9.jpg)
 
 GPUが認識できていることを確認。
+
+
+
+## Jupyter lab extension
+
+`Settings > Advanced Settings Editor > Extension Manager`
+
+User Overridesで以下のように設定。
+
+```json
+{
+    "enabled": true
+}
+```
+
+![image-20190527192223570](http://ww2.sinaimg.cn/large/006tNc79gy1g3g1q7h07aj31da0u04fi.jpg)
 
