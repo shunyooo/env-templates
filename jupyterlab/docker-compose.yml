@@ -1,16 +1,11 @@
-version: '2.2'
+version: '3.7'
 services:
-  jupyter:
-    image: jupyter/datascience-notebook
-    environment:
-      JUPYTER_ENABLE_LAB: 1
+  jupyterlab:
+    build: .
     ports:
       - 8888:8888
-    # エラル
-    # Invalid response: 403 Forbidden
-    # Cannot read property 'path' of undefined 
-    # volumes:
-    #   - ./jupyterlab:/home/jovyan/work
-    working_dir: /home/jovyan/work
-    command: start-notebook.sh --NotebookApp.token=''
+    volumes:
+      - ./work:/root/user/work
+    working_dir: /root/user/work
+    command: sh /run.sh
     restart: always
