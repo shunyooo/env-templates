@@ -1,0 +1,3 @@
+mojimoji==0.0.9.post0
+mecab-python3==0.996.2
+wordcloud==1.5.0
