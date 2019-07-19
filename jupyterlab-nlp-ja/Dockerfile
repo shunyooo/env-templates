@@ -11,10 +11,10 @@ RUN git clone --depth 1 https://github.com/neologd/mecab-ipadic-neologd.git\
     && bin/install-mecab-ipadic-neologd -n -y
 
 # mecab setting
-ADD mecabrc /etc/mecabrc
+COPY mecabrc /etc/mecabrc
 
 # install python packages
 ADD requirements.txt /tmp
 RUN pip install pip setuptools -U && pip install --upgrade pip && pip install -r /tmp/requirements.txt
 
-ADD mecab-test.sh /mecab-test.sh
+COPY mecab-test.sh /mecab-test.sh
