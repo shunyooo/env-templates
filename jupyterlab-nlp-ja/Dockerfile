@@ -3,7 +3,7 @@ FROM syunyooo/jupyterlab
 MAINTAINER Shunyo Kawamoto
 
 # mecab
-RUN apt-get update && apt-get -y install python3.7-dev curl mecab libmecab-dev mecab-ipadic mecab-ipadic-utf8 file
+RUN apt-get update && apt-get -y install python3.7-dev curl mecab libmecab-dev mecab-ipadic mecab-ipadic-utf8 file fonts-migmix
 
 # mecab ipadic-neologd
 RUN git clone --depth 1 https://github.com/neologd/mecab-ipadic-neologd.git\
