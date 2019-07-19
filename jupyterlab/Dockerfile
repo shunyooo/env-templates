@@ -21,7 +21,7 @@ RUN add-apt-repository ppa:deadsnakes/ppa \
     && ln -s /usr/bin/python3.7 /usr/local/bin/python
 
 # install common python packages
-COPY requirements.txt /tmp
+COPY requirements.txt /tmp/requirements.txt
 RUN pip install pip setuptools -U && pip install --upgrade pip && pip install -r /tmp/requirements.txt
 
 # set working directory
