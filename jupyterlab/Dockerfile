@@ -38,7 +38,7 @@ RUN pip install --upgrade pip && pip install ipywidgets \
     && jupyter labextension install @krassowski/jupyterlab_go_to_definition \
     && jupyter labextension install @lckr/jupyterlab_variableinspector \
     && jupyter labextension install ipyvolume \
-    && jupyter labextension install @jupyter-widgets/jupyterlab-manager@0.34
+    && jupyter labextension install @jupyter-widgets/jupyterlab-manager
 
 # 起動時用スクリプト
 COPY run.sh /run.sh
