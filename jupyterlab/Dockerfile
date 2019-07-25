@@ -3,7 +3,7 @@ FROM ubuntu:16.04
 # install basic dependencies
 RUN apt-get update && apt-get upgrade -y && apt-get install -y --no-install-recommends \
     sudo git wget cmake nano vim gcc g++ build-essential ca-certificates software-properties-common \
-    pkg-config zip g++ zlib1g-dev unzip nodejs npm \
+    pkg-config zip g++ zlib1g-dev unzip nodejs npm curl iputils-ping net-tools\
     && rm -rf /var/lib/apt/lists/*
 
 # update node
@@ -36,7 +36,9 @@ RUN pip install --upgrade pip && pip install ipywidgets \
     && jupyter nbextension enable --py --sys-prefix widgetsnbextension \
     && jupyter labextension install @jupyterlab/toc \
     && jupyter labextension install @krassowski/jupyterlab_go_to_definition \
-    && jupyter labextension install @lckr/jupyterlab_variableinspector
+    && jupyter labextension install @lckr/jupyterlab_variableinspector \
+    && jupyter labextension install ipyvolume \
+    && jupyter labextension install @jupyter-widgets/jupyterlab-manager@0.34
 
 # 起動時用スクリプト
 COPY run.sh /run.sh
