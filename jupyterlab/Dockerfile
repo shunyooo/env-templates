@@ -4,7 +4,7 @@ FROM ubuntu:16.04
 RUN apt-get update && apt-get upgrade -y && apt-get install -y --no-install-recommends \
     sudo git wget cmake nano vim gcc g++ build-essential ca-certificates software-properties-common \
     pkg-config zip g++ zlib1g-dev unzip nodejs npm curl iputils-ping net-tools\
-    && rm -rf /var/lib/apt/lists/*
+    && apt-get clean && rm -rf /var/lib/apt/lists/*
 
 # update node
 RUN npm install n -g \
@@ -18,7 +18,8 @@ RUN add-apt-repository ppa:deadsnakes/ppa \
     && wget -O ./get-pip.py https://bootstrap.pypa.io/get-pip.py \
     && python3.7 ./get-pip.py \
     && ln -s /usr/bin/python3.7 /usr/local/bin/python3 \
-    && ln -s /usr/bin/python3.7 /usr/local/bin/python
+    && ln -s /usr/bin/python3.7 /usr/local/bin/python \
+    && apt-get clean && rm -rf /var/lib/apt/lists/*
 
 # install common python packages
 COPY requirements.txt /tmp/requirements.txt
