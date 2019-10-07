@@ -1,5 +1,4 @@
-
-FROM syunyooo/jupyterlab
+FROM syunyooo/jupyterlab:local
 MAINTAINER Shunyo Kawamoto
 
 # mecab
