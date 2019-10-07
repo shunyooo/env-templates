@@ -34,11 +34,12 @@ COPY jupyter_notebook_config.py /root/.jupyter/jupyter_notebook_config.py
 # jupyter lab extension install
 RUN pip install --upgrade pip && pip install ipywidgets \
     && jupyter nbextension enable --py --sys-prefix widgetsnbextension \
-    && jupyter labextension install @jupyterlab/toc \
-    && jupyter labextension install @krassowski/jupyterlab_go_to_definition \
-    && jupyter labextension install @lckr/jupyterlab_variableinspector \
-    && jupyter labextension install ipyvolume \
-    && jupyter labextension install @jupyter-widgets/jupyterlab-manager
+    && jupyter labextension install @jupyterlab/toc --no-build \
+    && jupyter labextension install @krassowski/jupyterlab_go_to_definition --no-build \
+    && jupyter labextension install @lckr/jupyterlab_variableinspector --no-build \
+    && jupyter labextension install ipyvolume --no-build \
+    && jupyter labextension install @jupyter-widgets/jupyterlab-manager --no-build \
+    && jupyter lab build --minimize False
 
 # 起動時用スクリプト
 COPY run.sh /run.sh
