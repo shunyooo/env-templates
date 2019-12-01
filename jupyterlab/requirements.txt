@@ -11,3 +11,4 @@ kaggle==1.4.7.1
 jupyter==1.0.0 
 jupyterlab==1.1.4 
 jupyterlab-templates==0.2.0
+japanize-matplotlib
