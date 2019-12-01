@@ -37,7 +37,6 @@ RUN pip install --upgrade pip && pip install ipywidgets \
     && jupyter nbextension enable --py --sys-prefix widgetsnbextension \
     && jupyter labextension install @jupyterlab/toc --no-build \
     && jupyter labextension install @krassowski/jupyterlab_go_to_definition --no-build \
-    && jupyter labextension install @lckr/jupyterlab_variableinspector --no-build \
     && jupyter labextension install ipyvolume --no-build \
     && jupyter labextension install @jupyter-widgets/jupyterlab-manager --no-build \
     && jupyter lab build --minimize False
