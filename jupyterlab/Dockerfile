@@ -45,6 +45,9 @@ RUN pip install --upgrade pip && pip install ipywidgets \
 # 起動時用スクリプト
 COPY run.sh /run.sh
 
+# for GUI
+ENV DISPLAY=host.docker.internal:0.0
+
 # config and clean up
 RUN ldconfig \
     && apt-get -y clean \
