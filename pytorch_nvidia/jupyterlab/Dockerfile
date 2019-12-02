@@ -47,7 +47,7 @@ COPY jupyter_notebook_config.py /root/.jupyter/jupyter_notebook_config.py
 RUN pip install --upgrade pip && pip install ipywidgets \
     && jupyter nbextension enable --py --sys-prefix widgetsnbextension \
     && jupyter labextension install @jupyterlab/toc \
-    && jupyter labextension install @krassowski/jupyterlab_go_to_definition \
+    && jupyter labextension install @krassowski/jupyterlab_go_to_definition
 
 # 起動時用スクリプト
 COPY pytorch_nvidia_test.py /pytorch_nvidia_test.py
