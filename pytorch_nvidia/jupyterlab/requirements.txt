@@ -12,7 +12,7 @@ gensim==3.6.0
 kaggle==1.4.7.1
 jupyterlab==0.35.6
 jupyterlab-templates==0.0.8
-tensorflow==1.13.1
+tensorflow==1.15.0
 tensorboard==1.13.1
 tensorboardX==1.7
 japanize-matplotlib
