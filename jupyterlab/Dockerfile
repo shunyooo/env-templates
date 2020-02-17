@@ -28,11 +28,11 @@ RUN pip install pip setuptools -U && pip install --upgrade pip && pip install -r
 # set working directory
 WORKDIR /root/user
 
-# jupyter 設定
+# jupyter setting
 RUN jupyter notebook --generate-config
 COPY jupyter_notebook_config.py /root/.jupyter/jupyter_notebook_config.py
 
-# jupyter lab extension install
+# jupyter-lab extension install
 RUN pip install --upgrade pip && pip install ipywidgets \
     && jupyter nbextension enable --py --sys-prefix widgetsnbextension \
     && jupyter labextension install @jupyterlab/toc --no-build \
@@ -40,6 +40,9 @@ RUN pip install --upgrade pip && pip install ipywidgets \
     && jupyter labextension install ipyvolume --no-build \
     && jupyter labextension install @jupyter-widgets/jupyterlab-manager --no-build \
     && jupyter lab build --minimize False
+
+# jupyter-lab setting
+COPY ./jupyterlab-settings /root/.jupyter/lab/user-settings/\@jupyterlab
 
 # 起動時用スクリプト
 COPY run.sh /run.sh
