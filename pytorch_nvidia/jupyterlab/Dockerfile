@@ -4,18 +4,12 @@ FROM nvidia/cuda:10.0-cudnn7-devel-ubuntu16.04
 RUN apt-get update && apt-get upgrade -y && apt-get install -y --no-install-recommends \
     sudo git wget cmake nano vim gcc g++ build-essential ca-certificates software-properties-common \
     pkg-config zip g++ zlib1g-dev unzip nodejs npm \
-    && rm -rf /var/lib/apt/lists/*
+    && apt-get clean && rm -rf /var/lib/apt/lists/*
 
 # update node
 RUN npm install n -g \
     && n stable \
     && apt purge -y nodejs npm
-
-# tensorflow用だが、いらないかも
-#RUN wget "https://github.com/bazelbuild/bazel/releases/download/0.25.3/bazel-0.25.3-installer-linux-x86_64.sh" \
-#    && chmod +x bazel-0.25.3-installer-linux-x86_64.sh && ./bazel-0.25.3-installer-linux-x86_64.sh --user \
-#    && echo 'export PATH="$PATH:$HOME/bin"' >> ~/.bashrc \
-#    && exec $SHELL
 
 # install python
 RUN add-apt-repository ppa:deadsnakes/ppa \
@@ -24,17 +18,18 @@ RUN add-apt-repository ppa:deadsnakes/ppa \
     && wget -O ./get-pip.py https://bootstrap.pypa.io/get-pip.py \
     && python3.7 ./get-pip.py \
     && ln -s /usr/bin/python3.7 /usr/local/bin/python3 \
-    && ln -s /usr/bin/python3.7 /usr/local/bin/python
+    && ln -s /usr/bin/python3.7 /usr/local/bin/python \
+    && apt-get clean && rm -rf /var/lib/apt/lists/*
 
 # install common python packages
-ADD requirements.txt /tmp
+COPY requirements.txt /tmp/requirements.txt
 RUN pip install pip setuptools -U && pip install --upgrade pip && pip install -r /tmp/requirements.txt
 
 # install pytorch
 # https://pytorch.org/
-RUN pip install --upgrade pip \
-    && pip install https://download.pytorch.org/whl/cu100/torch-1.1.0-cp37-cp37m-linux_x86_64.whl \
-    && pip install https://download.pytorch.org/whl/cu100/torchvision-0.3.0-cp37-cp37m-linux_x86_64.whl
+RUN pip install --upgrade pip && pip install torch torchvision
+#    && pip install https://download.pytorch.org/whl/cu100/torch0.1.0-cp37-cp37m-linux_x86_64.whl \
+#    && pip install https://download.pytorch.org/whl/cu100/torchvision-0.3.0-cp37-cp37m-linux_x86_64.whl
 
 # set working directory
 WORKDIR /root/user
@@ -46,8 +41,14 @@ COPY jupyter_notebook_config.py /root/.jupyter/jupyter_notebook_config.py
 # jupyter lab extension install
 RUN pip install --upgrade pip && pip install ipywidgets \
     && jupyter nbextension enable --py --sys-prefix widgetsnbextension \
-    && jupyter labextension install @jupyterlab/toc \
-    && jupyter labextension install @krassowski/jupyterlab_go_to_definition
+    && jupyter labextension install @jupyterlab/toc --no-build \
+    && jupyter labextension install @krassowski/jupyterlab_go_to_definition --no-build \
+    && jupyter labextension install ipyvolume --no-build \
+    && jupyter labextension install @jupyter-widgets/jupyterlab-manager --no-build \
+    && jupyter lab build --minimize False
+
+# jupyter-lab setting
+COPY ./jupyterlab-settings /root/.jupyter/lab/user-settings/\@jupyterlab
 
 # 起動時用スクリプト
 COPY pytorch_nvidia_test.py /pytorch_nvidia_test.py
