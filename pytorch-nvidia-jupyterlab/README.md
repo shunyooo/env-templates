@@ -10,12 +10,10 @@ nvidia gpu 環境ですぐpytorchを回せる環境
 
 ## Features
 
-- **jupyterlab**
+- **jupyterlab** +extension
   - **[nvidia/cuda:10.0-cudnn7-devel-ubuntu16.04](https://hub.docker.com/r/nvidia/cuda)**
   - **Python3.7**
-  - **Pytorch1.1.0**
-- +extension
-  - toc
-  - jupyterlab_go_to_definition
-  - jupyterlab_variableinspector
+  - **Pytorch(latest)**
+- **tensorboard**
+    - share `tensorboard/logs`  with  `jupyterlab:/root/user/work/logs`
 
