@@ -9,10 +9,9 @@
 - **jupyterlab**
   - **Ubuntu 16.04**
   - **Python3.7**
-- +extension
+- +extensions
   - toc
   - jupyterlab_go_to_definition
-  - jupyterlab_variableinspector
 
 
 

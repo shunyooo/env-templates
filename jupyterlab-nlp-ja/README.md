@@ -6,13 +6,9 @@
 
 ## Features
 
-- jupyterlab
+- jupyterlab + extensions
   - Ubuntu 16.04
   - Python3.7
-- +extension
-  - toc
-  - jupyterlab_go_to_definition
-  - jupyterlab_variableinspector
 - **Japanese NLP**
   - **mecab-ipadic-neologd**
 
