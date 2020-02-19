@@ -2,7 +2,7 @@ FROM nvidia/cuda:10.0-cudnn7-devel-ubuntu16.04
 
 # install basic dependencies
 RUN apt-get update && apt-get upgrade -y && apt-get install -y --no-install-recommends \
-    sudo git wget cmake nano vim gcc g++ build-essential ca-certificates software-properties-common \
+    sudo git wget cmake curl vim gcc g++ build-essential ca-certificates software-properties-common \
     pkg-config zip g++ zlib1g-dev unzip nodejs npm \
     && apt-get clean && rm -rf /var/lib/apt/lists/*
 
@@ -19,6 +19,7 @@ RUN add-apt-repository ppa:deadsnakes/ppa \
     && python3.7 ./get-pip.py \
     && ln -s /usr/bin/python3.7 /usr/local/bin/python3 \
     && ln -s /usr/bin/python3.7 /usr/local/bin/python \
+    && apt-get python3.7-dev \
     && apt-get clean && rm -rf /var/lib/apt/lists/*
 
 # install common python packages & pytorch: https://pytorch.org/ 
@@ -39,6 +40,7 @@ RUN pip install --upgrade pip && pip install ipywidgets \
     && jupyter labextension install @krassowski/jupyterlab_go_to_definition --no-build \
     && jupyter labextension install ipyvolume --no-build \
     && jupyter labextension install @jupyter-widgets/jupyterlab-manager --no-build \
+    && jupyter labextension install jupyterlab-nvdashboard --no-build \
     && jupyter lab build --minimize False
 
 # jupyter-lab setting
