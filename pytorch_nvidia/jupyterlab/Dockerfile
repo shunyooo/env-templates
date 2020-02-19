@@ -21,15 +21,9 @@ RUN add-apt-repository ppa:deadsnakes/ppa \
     && ln -s /usr/bin/python3.7 /usr/local/bin/python \
     && apt-get clean && rm -rf /var/lib/apt/lists/*
 
-# install common python packages
+# install common python packages & pytorch: https://pytorch.org/ 
 COPY requirements.txt /tmp/requirements.txt
 RUN pip install pip setuptools -U && pip install --upgrade pip && pip install -r /tmp/requirements.txt
-
-# install pytorch
-# https://pytorch.org/
-RUN pip install --upgrade pip && pip install torch torchvision
-#    && pip install https://download.pytorch.org/whl/cu100/torch0.1.0-cp37-cp37m-linux_x86_64.whl \
-#    && pip install https://download.pytorch.org/whl/cu100/torchvision-0.3.0-cp37-cp37m-linux_x86_64.whl
 
 # set working directory
 WORKDIR /root/user

@@ -16,3 +16,5 @@ tensorflow==2.1.0
 tensorboard==2.1.0
 tensorboardX==2.0
 japanize-matplotlib
+torch
+torchvision
