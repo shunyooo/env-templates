@@ -1,4 +1,4 @@
-# pytorch_nvidia
+# jupyterlab-pytorch-nvidia
 
 <a href='https://hub.docker.com/r/syunyooo/pytorch-nvidia-jupyterlab'> ![](https://img.shields.io/docker/cloud/build/syunyooo/pytorch-nvidia-jupyterlab.svg?logo=docker&logoColor=white&style=for-the-badge)</a>
 
