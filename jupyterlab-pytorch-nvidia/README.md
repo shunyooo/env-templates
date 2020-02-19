@@ -1,6 +1,6 @@
 # jupyterlab-pytorch-nvidia
 
-<a href='https://hub.docker.com/r/syunyooo/pytorch-nvidia-jupyterlab'> ![](https://img.shields.io/docker/cloud/build/syunyooo/pytorch-nvidia-jupyterlab.svg?logo=docker&logoColor=white&style=for-the-badge)</a>
+<a href='https://hub.docker.com/r/syunyooo/jupyterlab-pytorch-nvidia'> ![](https://img.shields.io/docker/cloud/build/syunyooo/jupyterlab-pytorch-nvidia.svg?logo=docker&logoColor=white&style=for-the-badge)</a> 
 
 nvidia gpu 環境ですぐpytorchを回せる環境
 
