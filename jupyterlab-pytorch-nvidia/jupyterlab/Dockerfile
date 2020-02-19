@@ -19,7 +19,7 @@ RUN add-apt-repository ppa:deadsnakes/ppa \
     && python3.7 ./get-pip.py \
     && ln -s /usr/bin/python3.7 /usr/local/bin/python3 \
     && ln -s /usr/bin/python3.7 /usr/local/bin/python \
-    && apt-get python3.7-dev \
+    && apt-get install -y python3.7-dev \
     && apt-get clean && rm -rf /var/lib/apt/lists/*
 
 # install common python packages & pytorch: https://pytorch.org/ 
