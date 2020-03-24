@@ -33,12 +33,14 @@ RUN jupyter notebook --generate-config
 COPY jupyter_notebook_config.py /root/.jupyter/jupyter_notebook_config.py
 
 # jupyter-lab extension install
-RUN pip install --upgrade pip && pip install ipywidgets \
+RUN pip install --upgrade pip && pip install ipywidgets jupyterlab_templates \
     && jupyter nbextension enable --py --sys-prefix widgetsnbextension \
+    && jupyter labextension install jupyterlab_templates \
     && jupyter labextension install @jupyterlab/toc --no-build \
-    && jupyter labextension install @krassowski/jupyterlab_go_to_definition@0.7.1 --no-build \
+    && jupyter labextension install @krassowski/jupyterlab_go_to_definition --no-build \
     && jupyter labextension install ipyvolume --no-build \
     && jupyter labextension install @jupyter-widgets/jupyterlab-manager --no-build \
+    && jupyter serverextension enable --py jupyterlab_templates \
     && jupyter lab build --minimize False
 
 # jupyter-lab setting
