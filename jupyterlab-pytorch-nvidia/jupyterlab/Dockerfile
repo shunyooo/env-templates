@@ -14,41 +14,46 @@ RUN npm install n -g \
 # install python
 RUN add-apt-repository ppa:deadsnakes/ppa \
     && apt-get update \
-    && apt-get install -y python3.7 \
+    && apt-get install -y python3.7 python3.7-dev\
     && wget -O ./get-pip.py https://bootstrap.pypa.io/get-pip.py \
     && python3.7 ./get-pip.py \
     && ln -s /usr/bin/python3.7 /usr/local/bin/python3 \
     && ln -s /usr/bin/python3.7 /usr/local/bin/python \
-    && apt-get install -y python3.7-dev \
     && apt-get clean && rm -rf /var/lib/apt/lists/*
 
 # install common python packages & pytorch: https://pytorch.org/ 
 COPY requirements.txt /tmp/requirements.txt
-RUN pip install pip setuptools -U && pip install --upgrade pip && pip install -r /tmp/requirements.txt
+COPY .gitconfig /root/.gitconfig
+RUN pip install pip setuptools -U && pip install --upgrade pip && pip install -r /tmp/requirements.txt \
+    && nbdime config-git --enable --system
 
 # set working directory
 WORKDIR /root/user
 
-# jupyter 設定
+# jupyter setting
 RUN jupyter notebook --generate-config
 COPY jupyter_notebook_config.py /root/.jupyter/jupyter_notebook_config.py
 
 # jupyter lab extension install
-RUN pip install --upgrade pip && pip install ipywidgets \
+RUN pip install --upgrade pip && pip install ipywidgets jupyterlab_templates \
     && jupyter nbextension enable --py --sys-prefix widgetsnbextension \
+    && jupyter labextension install jupyterlab_templates \
     && jupyter labextension install @jupyterlab/toc --no-build \
-    && jupyter labextension install @krassowski/jupyterlab_go_to_definition@0.7.1 --no-build \
+    && jupyter labextension install @krassowski/jupyterlab_go_to_definition --no-build \
     && jupyter labextension install ipyvolume --no-build \
     && jupyter labextension install @jupyter-widgets/jupyterlab-manager --no-build \
-    && jupyter labextension install jupyterlab-nvdashboard --no-build \
+    && jupyter serverextension enable --py jupyterlab_templates \
     && jupyter lab build --minimize False
 
 # jupyter-lab setting
 COPY ./jupyterlab-settings /root/.jupyter/lab/user-settings/\@jupyterlab
 
-# 起動時用スクリプト
+# run script
 COPY pytorch_nvidia_test.py /pytorch_nvidia_test.py
 COPY run.sh /run.sh
+
+# for GUI
+ENV DISPLAY=host.docker.internal:0.0
 
 # config and clean up
 RUN ldconfig \
