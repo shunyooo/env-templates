@@ -9,3 +9,5 @@ services:
     working_dir: /root/user/work
     command: sh /run.sh
     restart: always
+    env_file:
+      - .env
