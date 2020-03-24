@@ -14,7 +14,7 @@ RUN npm install n -g \
 # install python
 RUN add-apt-repository ppa:deadsnakes/ppa \
     && apt-get update \
-    && apt-get install -y python3.7 \
+    && apt-get install -y python3.7 python3.7-dev\
     && wget -O ./get-pip.py https://bootstrap.pypa.io/get-pip.py \
     && python3.7 ./get-pip.py \
     && ln -s /usr/bin/python3.7 /usr/local/bin/python3 \
