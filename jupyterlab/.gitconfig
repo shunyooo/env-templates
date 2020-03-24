@@ -1,0 +1,6 @@
+[user]
+	email = syunyo1028@yahoo.co.jp
+	name = Shunyo Kawamoto
+[core]
+	pager = LESSCHARSET=utf-8 less
+	quotepath = false

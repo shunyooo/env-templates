@@ -21,9 +21,11 @@ RUN add-apt-repository ppa:deadsnakes/ppa \
     && ln -s /usr/bin/python3.7 /usr/local/bin/python \
     && apt-get clean && rm -rf /var/lib/apt/lists/*
 
-# install common python packages
+# install common python packages + git config
 COPY requirements.txt /tmp/requirements.txt
-RUN pip install pip setuptools -U && pip install --upgrade pip && pip install -r /tmp/requirements.txt
+COPY .gitconfig /root/.gitconfig
+RUN pip install pip setuptools -U && pip install --upgrade pip && pip install -r /tmp/requirements.txt \
+    && nbdime config-git --enable --system
 
 # set working directory
 WORKDIR /root/user
