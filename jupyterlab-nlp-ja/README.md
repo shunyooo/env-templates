@@ -12,3 +12,24 @@
 - **Japanese NLP**
   - **mecab-ipadic-neologd**
 
+## Quick Start
+
+1. Create `docker-compose.yml` 
+2. Copy and paste the following code into a file.
+
+```yaml
+version: '3.7'
+services:
+  jupyterlab-nlp-ja:
+    image: syunyooo/jupyterlab-nlp-ja
+    ports:
+      - 8888:8888
+    volumes:
+      - ./work:/root/user/work:cached
+    working_dir: /root/user/work
+    command: bash -c "sh /mecab-test.sh && sh /run.sh"
+    restart: always
+```
+
+3. Run `docker-compose up`
+
