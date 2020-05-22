@@ -1,0 +1,13 @@
+{
+    "shortcuts": [
+        // JupyterLab Code Formatter
+        {
+            "command": "jupyterlab_code_formatter:format",
+            "keys": [
+                "Ctrl K",
+                "Ctrl F"
+            ],
+            "selector": ".jp-Notebook.jp-mod-editMode"
+        }
+    ],
+}
