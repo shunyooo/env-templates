@@ -17,4 +17,8 @@ COPY mecabrc /etc/mecabrc
 ADD requirements.txt /tmp
 RUN pip install pip setuptools -U && pip install --upgrade pip && pip install -r /tmp/requirements.txt
 
-COPY mecab-test.sh /mecab-test.sh
+# run scripts
+COPY run.sh /run.sh
+COPY parser-test.sh /parser-test.sh
+
+CMD ["sh", "/parser-test.sh", "&&", "sh /run.sh"]
