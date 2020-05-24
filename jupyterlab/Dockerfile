@@ -3,8 +3,14 @@ FROM ubuntu:16.04
 # install basic dependencies
 RUN apt-get update && apt-get upgrade -y && apt-get install -y --no-install-recommends \
     sudo git wget cmake nano vim gcc g++ build-essential ca-certificates software-properties-common \
-    pkg-config zip g++ zlib1g-dev unzip nodejs npm curl iputils-ping net-tools\
+    pkg-config zip g++ zlib1g-dev unzip nodejs npm curl iputils-ping net-tools figlet\
     && apt-get clean && rm -rf /var/lib/apt/lists/*
+
+# install figlet fonts
+RUN wget ftp://ftp.figlet.org/pub/figlet/fonts/contributed.tar.gz \
+    && gunzip -dc ./contributed.tar.gz | tar vfx - \
+    && find ./contributed -type f \( -name '*.flf' -or -name '*.flc' \) -exec sudo /bin/cp {} /usr/share/figlet/ \; \
+    && rm -rf contributed.tar.gz contributed
 
 # update node
 RUN npm install n -g \

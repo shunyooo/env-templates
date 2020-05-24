@@ -2,6 +2,8 @@ version: '3.7'
 services:
   jupyterlab:
     build: .
+    image: syunyooo/jupyterlab
+    container_name: jupyterlab
     ports:
       - 8888:8888
     volumes:
