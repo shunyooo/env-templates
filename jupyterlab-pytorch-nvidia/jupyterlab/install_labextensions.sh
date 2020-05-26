@@ -42,4 +42,4 @@ jupyter labextension install @jupyterlab/toc --no-build
 jupyter labextension install @krassowski/jupyterlab_go_to_definition --no-build 
 
 # Build
-jupyter lab build --minimize False
+jupyter lab build --minimize False --name Pytorch-GPU
