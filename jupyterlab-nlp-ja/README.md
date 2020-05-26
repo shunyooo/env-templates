@@ -11,6 +11,7 @@
   - Python3.7
 - **Japanese NLP**
   - **mecab-ipadic-neologd**
+  - **ginza**
 
 ## Quick Start
 

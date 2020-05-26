@@ -3,3 +3,5 @@ mecab-python3==0.996.2
 wordcloud==1.5.0
 jaconv==0.2.4
 ginza
+emoji
+nltk

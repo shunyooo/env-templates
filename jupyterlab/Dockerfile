@@ -57,3 +57,5 @@ ENV DISPLAY=host.docker.internal:0.0
 RUN ldconfig \
     && apt-get -y clean \
     && apt-get -y autoremove
+
+CMD ["sh", "/run.sh"]

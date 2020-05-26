@@ -21,4 +21,4 @@ RUN pip install pip setuptools -U && pip install --upgrade pip && pip install -r
 COPY run.sh /run.sh
 COPY parser-test.sh /parser-test.sh
 
-CMD ["sh", "/parser-test.sh", "&&", "sh /run.sh"]
+CMD ["sh", "/parser-test.sh", "&&", "sh", "/run.sh"]
