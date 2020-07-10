@@ -8,6 +8,14 @@
                 "Ctrl F"
             ],
             "selector": ".jp-Notebook.jp-mod-editMode"
+        },
+        {
+            "command": "notebook:restart-run-all",
+            "keys": [
+                "Ctrl C",
+                "Ctrl C"
+            ],
+            "selector": ".jp-Notebook:focus"
         }
     ],
 }
