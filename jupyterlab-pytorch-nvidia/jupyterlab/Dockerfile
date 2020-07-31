@@ -1,10 +1,10 @@
 FROM nvidia/cuda:10.0-cudnn7-devel-ubuntu16.04
 
 # install basic dependencies
-RUN apt-get update && apt-get upgrade -y && apt-get install -y --no-install-recommends \
+RUN apt update && apt upgrade -y && apt install -y --no-install-recommends \
     sudo git wget cmake curl vim gcc g++ build-essential ca-certificates software-properties-common \
     pkg-config zip g++ zlib1g-dev unzip nodejs npm curl iputils-ping net-tools figlet\
-    && apt-get clean && rm -rf /var/lib/apt/lists/*
+    && apt clean && rm -rf /var/lib/apt/lists/*
 
 # install figlet fonts
 RUN wget ftp://ftp.figlet.org/pub/figlet/fonts/contributed.tar.gz \
@@ -19,13 +19,13 @@ RUN npm install n -g \
 
 # install python
 RUN add-apt-repository ppa:deadsnakes/ppa \
-    && apt-get update \
-    && apt-get install -y python3.7 python3.7-dev\
+    && apt update \
+    && apt install -y python3.7 python3.7-dev\
     && wget -O ./get-pip.py https://bootstrap.pypa.io/get-pip.py \
     && python3.7 ./get-pip.py \
     && ln -s /usr/bin/python3.7 /usr/local/bin/python3 \
     && ln -s /usr/bin/python3.7 /usr/local/bin/python \
-    && apt-get clean && rm -rf /var/lib/apt/lists/*
+    && apt clean && rm -rf /var/lib/apt/lists/*
 
 # install common python packages & pytorch: https://pytorch.org/ 
 COPY requirements.txt /tmp/requirements.txt
@@ -56,7 +56,7 @@ ENV DISPLAY=host.docker.internal:0.0
 
 # config and clean up
 RUN ldconfig \
-    && apt-get -y clean \
-    && apt-get -y autoremove
+    && apt -y clean \
+    && apt -y autoremove
 
 CMD ["sh", "/run.sh"]
