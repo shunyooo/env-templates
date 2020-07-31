@@ -1,6 +1,6 @@
 [user]
-	email = syunyo1028@yahoo.co.jp
-	name = Shunyo Kawamoto
+	email = var.cyrano@gmail.com
+	name = v-crn
 [core]
 	pager = LESSCHARSET=utf-8 less
 	quotepath = false
