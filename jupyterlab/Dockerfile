@@ -1,4 +1,5 @@
-FROM ubuntu:16.04
+FROM ubuntu:20.04
+ENV DEBIAN_FRONTEND=noninteractive
 
 # install basic dependencies
 RUN apt-get update && apt-get upgrade -y && apt-get install -y --no-install-recommends \
