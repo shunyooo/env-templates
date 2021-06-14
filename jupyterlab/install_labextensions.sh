@@ -20,14 +20,8 @@ pip install jupyterlab_code_formatter
 jupyter labextension install @ryantam626/jupyterlab_code_formatter --no-build
 jupyter serverextension enable --py jupyterlab_code_formatter
 
-# jupyter-lsp
-# auto complete が遅すぎる: https://github.com/krassowski/jupyterlab-lsp/issues/272
-# warningがうるさい
-# pip install jupyter-lsp python-language-server[all]
-# jupyter labextension install @krassowski/jupyterlab-lsp --no-build
-
 # jupyterlab-system-monitor
-pip install nbresuse==0.3.3
+pip install nbresuse==0.4.0
 jupyter labextension install jupyterlab-topbar-extension jupyterlab-system-monitor --no-build
 
 # jupyterlab_templates
@@ -40,6 +34,10 @@ jupyter labextension install @jupyterlab/toc --no-build
 
 # jupyterlab_go_to_definition
 jupyter labextension install @krassowski/jupyterlab_go_to_definition --no-build 
+
+# plotly
+jupyter labextension install jupyterlab-plotly@4.14.3 --no-build 
+jupyter labextension install @jupyter-widgets/jupyterlab-manager plotlywidget@4.14.3 --no-build 
 
 # Build
 jupyter lab build --minimize False
