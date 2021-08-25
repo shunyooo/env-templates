@@ -8,7 +8,7 @@ numpy==1.18.2
 pandas==1.0.3
 scipy==1.4.1
 seaborn==0.10.0
-tensorflow==2.2.0
+tensorflow==2.5.1
 tensorboard==2.2.1
 tensorboardX==2.0
 kaggle==1.5.6
