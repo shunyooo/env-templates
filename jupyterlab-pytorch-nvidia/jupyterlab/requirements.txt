@@ -14,7 +14,7 @@ tensorboardX==2.0
 kaggle==1.5.6
 jupyter==1.0.0 
 jupyterlab==2.0.1
-nbdime==2.0.0
+nbdime==2.1.1
 japanize-matplotlib
 torch
 torchvision
