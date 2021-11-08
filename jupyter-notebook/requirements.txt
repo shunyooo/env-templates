@@ -1,2 +1,2 @@
 jupyter==1.0.0 
-nbdime==2.0.0
+nbdime==2.1.1
