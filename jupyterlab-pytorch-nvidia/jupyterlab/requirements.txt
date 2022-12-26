@@ -1,6 +1,6 @@
 pip==21.1
 setuptools==45.2.0
-wheel==0.34.2
+wheel==0.38.1
 gensim==3.8.1
 scikit_learn==0.22.1
 matplotlib==3.2.1
